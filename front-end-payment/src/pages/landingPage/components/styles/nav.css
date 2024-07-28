@@ -1,0 +1,4 @@
+.contanier-palomita:hover {
+    scale: 1.5;
+    transition: scale .5s ease-in;
+}
