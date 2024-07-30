@@ -5,7 +5,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import '../sections/styles/gallery.css';
 import ViewAgendaIcon from '@mui/icons-material/ViewAgenda';
 import ViewColumnIcon from '@mui/icons-material/ViewColumn';
-
+import SplitscreenIcon from '@mui/icons-material/Splitscreen';
 const imageProps = {
   style: { width: '100%', height: '100%', objectFit: 'cover', borderRadius: '10px' },
   alt: 'image'
@@ -23,13 +23,16 @@ const additionalImages = [
 
 function Gallery() {
   const [open, setOpen] = useState(false);
-  const [gridSize, setGridSize] = useState(4);
+  const [gridSize, setGridSize] = useState(12);
 
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+    setGridSize(12)
+  } 
 
   const toggleGridSize = () => {
-    setGridSize(gridSize === 4 ? 6 : 4);
+    setGridSize(gridSize === 12 ? 6 : gridSize === 6 ? 4 : 12);
   };
 
   return (
@@ -112,7 +115,7 @@ function Gallery() {
             onClick={toggleGridSize}
             sx={{ mb: 2 }}
           >
-         {gridSize === 4 ? <ViewAgendaIcon style={{ transform: 'rotate(90deg)', position:'fixed' }} /> : <ViewColumnIcon style={{  position:'fixed' }}/>}
+         {gridSize === 12 ? <SplitscreenIcon style={{ transform: 'rotate(90deg)', position:'fixed' }} /> : gridSize === 6 ? < ViewColumnIcon  style={{  position:'fixed' }}/> : < ViewAgendaIcon  style={{  position:'fixed' }}/>}
 
           </Button>
           <Grid style={{height:'100vh'}} container spacing={1}>
