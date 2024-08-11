@@ -41,12 +41,12 @@ const additionalImages = [
 
 function Gallery() {
   const [open, setOpen] = useState(false);
-  const [gridSize, setGridSize] = useState(6);
+  const [gridSize, setGridSize] = useState(4);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
     setOpen(false);
-    setGridSize(12)
+    setGridSize(6)
   } 
 
   const toggleGridSize = () => {
@@ -120,15 +120,16 @@ function Gallery() {
       <IconButton
         onClick={handleOpen}
         sx={{
+          marginTop:'2rem',
           bgcolor: 'transparent',
           color: 'white',
           '&:hover': {
             bgcolor: 'transparent',
-            color: 'grey',
+            color: '#333',
           }
         }}
       > ver mas fotos
-        <AddPhotoAlternateIcon sx={{ fontSize: 50 }} />
+        <AddPhotoAlternateIcon sx={{ fontSize: 20 }} />
       </IconButton>
       <Modal
         open={open}
@@ -170,7 +171,7 @@ function Gallery() {
           </Button>
           <Grid style={{ height: '100vh' }} container spacing={1}>
   {additionalImages.map((src, index) => (
-    <Grid item xs={12} sm={6} md={gridSize} key={index}>
+    <Grid item xs={12} sm={4} md={gridSize} key={index}>
       <div
         style={{
           background: `url('${src}')`,

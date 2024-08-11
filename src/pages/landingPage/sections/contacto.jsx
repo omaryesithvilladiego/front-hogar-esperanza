@@ -15,7 +15,7 @@ const validationSchema = Yup.object().shape({
 
 function ContactSection() {
   return (
-    <Box className="contact-section" sx={{ height: {md:'120vh'}, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <Box className="contact-section" sx={{ height:'140vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <Grid container spacing={2} className="contact-container" sx={{ width: '80%', backgroundColor: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', borderRadius: '1rem', padding: '2rem' }}>
         
         {/* Texto de la izquierda */}
@@ -186,7 +186,18 @@ function ContactSection() {
                     }
                   }}
                 />
-                <Button type="submit" variant="contained" color="primary">
+                <Button   sx={{
+                backgroundColor: 'transparent',
+                color: 'white',
+                border: '1px solid white', // Opcional: Agrega un borde blanco
+                padding: '0.5rem 1rem', // Opcional: Ajusta el padding
+                textTransform: 'none', // Opcional: Evita que el texto se transforme a mayúsculas
+                boxShadow: 'none', // Elimina el efecto de sombra predeterminado
+                '&:hover': {
+                  backgroundColor: 'rgba(255, 255, 255, 0.2)', // Cambia el color de fondo al hacer hover
+                  boxShadow: 'none' // Elimina el efecto de sombra al hacer hover
+                }
+              }} type="submit" variant="contained" color="primary">
                   Enviar
                 </Button>
               </Form>

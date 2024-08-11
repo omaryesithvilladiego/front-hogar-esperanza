@@ -23,7 +23,7 @@ function Planes() {
     };
 
     return (
-        <Box py={4} sx={{ background: " url('https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/IMG_1238.PNG?alt=media&token=b1061879-50cf-4ae3-b8ce-f0153aba3bf6')", color:'#19a877', textAlign:'center', backgroundPosition:'center', backgroundSize:'cover', backgroundAttachment:'fixed' }}>
+        <Box py={4} sx={{ background: " url('https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/IMG_1238.PNG?alt=media&token=b1061879-50cf-4ae3-b8ce-f0153aba3bf6')", color:'#19a877', textAlign:'center', backgroundPosition:'center', backgroundSize:'cover', backgroundAttachment:'fixed', height:{md:'100vh'} }}>
             <Container>
                 <Typography
                     component="h2"
@@ -31,6 +31,7 @@ function Planes() {
                     fontFamily="borel, cursive"
                     textAlign="center"
                     gutterBottom
+                    marginTop={4}
                     color={'white'}
                 >
                     Planes
@@ -46,6 +47,7 @@ function Planes() {
                             sx={{
                                 padding: 3,
                                 display:'flex',
+                                height:'100%',
                                 flexDirection:'column',
                                 justifyContent:'space-between',
                                 gap:'1rem',
@@ -87,7 +89,7 @@ function Planes() {
                                         display: 'flex',
                                         alignItems: 'center',
                                         justifyContent: 'center',
-                                        height: '5rem',  // Establece una altura fija para el contenedor
+                                        height: '14rem',  // Establece una altura fija para el contenedor
                                         overflow: 'hidden',
                                         textAlign: 'center',
                                     }}

@@ -1,7 +1,7 @@
 const programs = [
     {
       id: 1,
-      nombre: 'hogarpermanente compartido',
+      nombre: 'hogar permanente compartido',
       descripcion: 'Este programa está diseñado específicamente para familias que buscan ofrecer a sus adultos mayores un hogar definitivo, seguro y lleno de calidad de vida. En Hogar Esperanza, entendemos la importancia de proporcionar un entorno donde cada residente se sienta verdaderamente en casa. Nos comprometemos a ofrecer no solo un lugar físico, sino un ambiente cálido y acogedor, donde sus seres queridos recibirán atención personalizada y afectuosa.',
       incluye: [
         'Habitación compartida con baño compartido.',
@@ -25,7 +25,7 @@ const programs = [
     },
     {
       id: 2,
-      nombre: 'hogarpermanenteVIP',
+      nombre: 'hogar permanente VIP',
       descripcion: 'Nuestro programa VIP está meticulosamente diseñado para familias que buscan proporcionar a sus adultos mayores un hogar definitivo, seguro y lleno de una calidad de vida excepcional. En Hogar Esperanza, reconocemos la importancia fundamental de crear un entorno donde cada residente no solo se sienta acogido, sino verdaderamente en casa.',
       incluye: [
         'Habitación privada con baño independiente.',
@@ -50,7 +50,7 @@ const programs = [
     },
     {
       id: 3,
-      nombre: 'hogarpermanenteVIP compartido',
+      nombre: 'hogar permanente VIP compartido',
       descripcion: 'Nuestro programa VIP compartido ofrece a familias la posibilidad de brindar a sus adultos mayores un hogar seguro y de alta calidad en Hogar La Esperanza. Valoramos crear un entorno acogedor donde cada residente se sienta como en casa, fomentando la compañía y la camaradería entre los residentes al compartir habitación.',
       incluye: [
         'Habitación compartida con baño compartido.',

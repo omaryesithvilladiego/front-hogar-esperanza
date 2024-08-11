@@ -7,6 +7,7 @@ import 'swiper/css';
 import 'swiper/css/navigation'; // Importa los estilos necesarios para Navigation
 import 'swiper/css/zoom'; // Importa los estilos necesarios para Zoom
 import { Typography } from '@mui/material';
+import "./instalaciones.css"
 
 const additionalImages = [
   // Agrega más URLs de imágenes aquí
