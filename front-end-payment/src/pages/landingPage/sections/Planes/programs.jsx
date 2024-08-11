@@ -73,26 +73,26 @@ const programs = [
         'Afiliación a un seguro funerario si no lo posee.'
       ]
     },
-    {
-      id: 4,
-      nombre: 'hogar vacaciones',
-      descripcion: 'Nuestro programa está diseñado para aquellos abuelitos que necesiten cuidados temporales o de corta estancia, con una duración mínima de 15 días. En Hogar Esperanza, comprendemos la importancia de proporcionar un ambiente seguro y acogedor durante este período transitorio. Nos comprometemos a ofrecer atención personalizada y de calidad, asegurando que cada residente se sienta cuidado y respetado mientras se encuentre con nosotros.',
-      incluye: [
-        'Tres comidas principales y 2 meriendas.',
-        'Aseo y mantenimiento a la habitación diario.',
-        'Cuidado de pertenencias.',
-        'Lavado y planchado de ropa.',
-        'Salidas con acompañamiento (previamente autorizadas por su responsable directo).',
-        'Asistencia en comunicación virtual con familiares.',
-        'Acompañamiento de auxiliares de enfermería las 24 h.',
-        'AMI, servicio de asistencia primaria y emergencias durante su estancia.',
-        'Actividades recreativas.',
-        'Vigilancia de toma de medicamentos autorizados por sus médicos tratantes.',
-        'Toma de signos vitales.',
-        'Apoyo en las actividades de la vida diaria.',
-        'Vigilancia nocturna.'
-      ]
-    }
+    // {
+    //   id: 4,
+    //   nombre: 'hogar vacaciones',
+    //   descripcion: 'Nuestro programa está diseñado para aquellos abuelitos que necesiten cuidados temporales o de corta estancia, con una duración mínima de 15 días. En Hogar Esperanza, comprendemos la importancia de proporcionar un ambiente seguro y acogedor durante este período transitorio. Nos comprometemos a ofrecer atención personalizada y de calidad, asegurando que cada residente se sienta cuidado y respetado mientras se encuentre con nosotros.',
+    //   incluye: [
+    //     'Tres comidas principales y 2 meriendas.',
+    //     'Aseo y mantenimiento a la habitación diario.',
+    //     'Cuidado de pertenencias.',
+    //     'Lavado y planchado de ropa.',
+    //     'Salidas con acompañamiento (previamente autorizadas por su responsable directo).',
+    //     'Asistencia en comunicación virtual con familiares.',
+    //     'Acompañamiento de auxiliares de enfermería las 24 h.',
+    //     'AMI, servicio de asistencia primaria y emergencias durante su estancia.',
+    //     'Actividades recreativas.',
+    //     'Vigilancia de toma de medicamentos autorizados por sus médicos tratantes.',
+    //     'Toma de signos vitales.',
+    //     'Apoyo en las actividades de la vida diaria.',
+    //     'Vigilancia nocturna.'
+    //   ]
+    // }
   ];
   
   export default programs
