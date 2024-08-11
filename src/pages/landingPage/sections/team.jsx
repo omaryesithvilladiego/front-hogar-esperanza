@@ -11,7 +11,7 @@ function NuestroEquipo() {
           </Box>
         </Grid>
         <Grid item xs={12}>
-          <Box sx={{ width:'70vw', margin:'0 auto', padding: '1rem', backgroundColor: 'white', textAlign: 'center', height:'50vh', background:'transparent', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
+          <Box sx={{ width:'70vw', margin:'0 auto', padding: '1rem', backgroundColor: 'white', textAlign: 'center', height:{md:'50vh'}, background:'transparent', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
            
             <Typography variant="body1">
             En Hogar Esperanza, nos esforzamos por brindar el mejor cuidado posible a nuestros adultos mayores. Para lograrlo,

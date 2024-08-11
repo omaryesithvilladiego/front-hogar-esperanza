@@ -15,12 +15,12 @@ const validationSchema = Yup.object().shape({
 
 function ContactSection() {
   return (
-    <Box className="contact-section" sx={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <Box className="contact-section" sx={{ height: '120vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <Grid container spacing={2} className="contact-container" sx={{ width: '80%', backgroundColor: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', borderRadius: '1rem', padding: '2rem' }}>
         
         {/* Texto de la izquierda */}
         <Grid item xs={12} md={6}>
-          <Typography variant="h3" color="white" gutterBottom>
+          <Typography fontSize={{xs:'8vw', md:'4vw'}} variant="h3" color="white" gutterBottom>
             Contáctanos
           </Typography>
           <Typography variant="body1" color="white" paragraph>
