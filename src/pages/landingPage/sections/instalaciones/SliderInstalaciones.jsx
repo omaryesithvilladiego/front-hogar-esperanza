@@ -67,7 +67,7 @@ const Instalaciones = () => {
         color={'#19a877'}
         fontSize={{xs:'8vw', md:'4vw'}}
       >
-        Instalaciones
+        instalaciones
       </Typography>
       <div style={{ height: '100vh', width: '95%', margin: '0 auto', display: 'flex', alignItems: 'center', position: 'absolute', }}>
 
