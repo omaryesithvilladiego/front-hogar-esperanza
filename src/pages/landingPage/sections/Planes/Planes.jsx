@@ -23,7 +23,8 @@ function Planes() {
     };
 
     return (
-        <Box py={4} sx={{ background: " url('https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/IMG_1238.PNG?alt=media&token=b1061879-50cf-4ae3-b8ce-f0153aba3bf6')", color:'#19a877', textAlign:'center', backgroundPosition:'center', backgroundSize:'cover', backgroundAttachment:'fixed', height:{md:'100vh'} }}>
+        <Box py={4} sx={{ background: " url('https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/IMG_1238.PNG?alt=media&token=b1061879-50cf-4ae3-b8ce-f0153aba3bf6')", color:'#19a877', textAlign:'center', backgroundPosition:'center', backgroundSize:'cover', backgroundAttachment:'fixed', paddingBottom:'4rem',
+            height:{md:'140vh'} }}>
             <Container>
                 <Typography
                     component="h2"
@@ -39,7 +40,7 @@ function Planes() {
                 <Box
                     display="grid"
                     gridTemplateColumns={{ xs: '1fr', sm: '1fr 1fr', md: '1fr 1fr 1fr' }}
-                    gap={4}
+                    gap={'4rem'}
                 >
                     {programs.map((programa, index) => (
                         <Box
