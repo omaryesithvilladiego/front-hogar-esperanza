@@ -54,8 +54,8 @@ function Gallery() {
   };
 
   return (
-    <Box className="gallery" sx={{ minHeight: '100vh', color: 'white', p: 5, display: 'flex', flexDirection: 'column', position: 'relative',  }}>
-      <Grid container spacing={6} sx={{ flexGrow: 1, width:'95%', margin:'0 auto', height:'20rem'}}>
+    <Box className="gallery" sx={{  minHeight: '100vh', color: 'white', p: 5, display: 'flex', flexDirection: 'column', paddingLeft:'5rem' }}>
+      <Grid container spacing={6} sx={{ flexGrow: 1, width:'100%',  height:'20rem', justifyContent:'center'}}>
         <Grid item xs={12} sm={6} md={6} sx={{ display: 'flex', flexDirection: 'column' }}>
           <div
             {...imageProps}

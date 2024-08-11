@@ -65,6 +65,7 @@ const Instalaciones = () => {
         textAlign="center"
         gutterBottom
         color={'#19a877'}
+        fontSize={{xs:'8vw', md:'4vw'}}
       >
         Instalaciones
       </Typography>
