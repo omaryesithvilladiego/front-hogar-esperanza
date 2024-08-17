@@ -1,29 +1,28 @@
-import React from 'react';
-import { Grid, Typography, TextField, Button, Box } from '@mui/material';
+import React, { useState } from 'react';
+import { Grid, Typography, TextField, Button, Box, Alert, Snackbar } from '@mui/material';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import "./styles/contacto.css"
-
-// Esquema de validación con Yup
-const validationSchema = Yup.object().shape({
-  nombre: Yup.string().required('Requerido'),
-  correo: Yup.string().email('Correo inválido').required('Requerido'),
-  telefono: Yup.string().required('Requerido'),
-  edad: Yup.number().required('Requerido'),
-  plan: Yup.string().required('Requerido'),
-});
+import axios from 'axios';
+import "../styles/contacto.css";
+import validationSchema from './validationSchema';
 
 function ContactSection() {
+  const [alert, setAlert] = useState({ open: false, message: '', severity: '' });
+
+  const handleClose = () => {
+    setAlert({ ...alert, open: false });
+  };
+
   return (
-    <Box className="contact-section" sx={{ height:'140vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <Box className="contact-section" sx={{ height: '140vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <Grid container spacing={2} className="contact-container" sx={{ width: '80%', backgroundColor: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', borderRadius: '1rem', padding: '2rem' }}>
         
         {/* Texto de la izquierda */}
         <Grid item xs={12} md={6}>
-          <Typography fontSize={{xs:'8vw', md:'4vw'}} variant="h3" color="white" gutterBottom>
+          <Typography fontSize={{xs: '8vw', md: '4vw'}} variant="h3" color="white" gutterBottom>
             Contáctanos
           </Typography>
-          <Typography variant="body1" color="white" paragraph>
+          <Typography width={ {md:'60%'  }} variant="body1" color="white" paragraph>
             Contáctanos hoy mismo para obtener más información sobre nuestros servicios y programas diseñados para mejorar la calidad de vida de los adultos mayores. Nuestro equipo de profesionales estará encantado de atenderte y guiarte a través del proceso de inscripción.
           </Typography>
         </Grid>
@@ -32,28 +31,39 @@ function ContactSection() {
         <Grid item xs={12} md={6}>
           <Formik
             initialValues={{
-              nombre: '',
-              correo: '',
-              telefono: '',
-              edad: '',
+              fullName: '',
+              email: '',
+              phone: '',
+              age: '',
               plan: '',
             }}
             validationSchema={validationSchema}
-            onSubmit={(values) => {
-              // Aquí puedes manejar el envío del formulario
-              console.log(values);
+            onSubmit={async (values) => {
+              
+              try {
+                const response = await axios.post('https://hogar-esperanza-back.onrender.com/create-user', values);
+                setAlert({ open: true, message: response.data, severity: 'success' });
+              } catch (error) {
+                console.log(error.response);
+                setAlert({ open: true, message: error.response.data, severity: 'error' });
+
+              }
+                
+                
+                
+             
             }}
           >
             {({ errors, touched }) => (
               <Form className='form' style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <Field
                   as={TextField}
-                  name="nombre"
-                  label="Nombre"
+                  name="fullName"
+                  label="Nombre completo"
                   variant="outlined"
                   fullWidth
-                  error={touched.nombre && Boolean(errors.nombre)}
-                  helperText={touched.nombre && errors.nombre}
+                  error={touched.fullName && Boolean(errors.fullName)}
+                  helperText={touched.fullName && errors.fullName}
                   InputProps={{
                     sx: {
                       background: 'transparent',
@@ -76,12 +86,12 @@ function ContactSection() {
                 />
                 <Field
                   as={TextField}
-                  name="correo"
+                  name="email"
                   label="Correo"
                   variant="outlined"
                   fullWidth
-                  error={touched.correo && Boolean(errors.correo)}
-                  helperText={touched.correo && errors.correo}
+                  error={touched.email && Boolean(errors.email)}
+                  helperText={touched.email && errors.email}
                   InputProps={{
                     sx: {
                       background: 'transparent',
@@ -104,12 +114,12 @@ function ContactSection() {
                 />
                 <Field
                   as={TextField}
-                  name="telefono"
+                  name="phone"
                   label="Teléfono"
                   variant="outlined"
                   fullWidth
-                  error={touched.telefono && Boolean(errors.telefono)}
-                  helperText={touched.telefono && errors.telefono}
+                  error={touched.phone && Boolean(errors.phone)}
+                  helperText={touched.phone && errors.phone}
                   InputProps={{
                     sx: {
                       background: 'transparent',
@@ -132,12 +142,12 @@ function ContactSection() {
                 />
                 <Field
                   as={TextField}
-                  name="edad"
+                  name="age"
                   label="Edad"
                   variant="outlined"
                   fullWidth
-                  error={touched.edad && Boolean(errors.edad)}
-                  helperText={touched.edad && errors.edad}
+                  error={touched.age && Boolean(errors.age)}
+                  helperText={touched.age && errors.age}
                   InputProps={{
                     sx: {
                       background: 'transparent',
@@ -186,18 +196,23 @@ function ContactSection() {
                     }
                   }}
                 />
-                <Button   sx={{
-                backgroundColor: 'transparent',
-                color: 'white',
-                border: '1px solid white', // Opcional: Agrega un borde blanco
-                padding: '0.5rem 1rem', // Opcional: Ajusta el padding
-                textTransform: 'none', // Opcional: Evita que el texto se transforme a mayúsculas
-                boxShadow: 'none', // Elimina el efecto de sombra predeterminado
-                '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.2)', // Cambia el color de fondo al hacer hover
-                  boxShadow: 'none' // Elimina el efecto de sombra al hacer hover
-                }
-              }} type="submit" variant="contained" color="primary">
+                <Button
+                  sx={{
+                    backgroundColor: 'transparent',
+                    color: 'white',
+                    border: '1px solid white',
+                    padding: '0.5rem 1rem',
+                    textTransform: 'none',
+                    boxShadow: 'none',
+                    '&:hover': {
+                      backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                      boxShadow: 'none'
+                    }
+                  }}
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                >
                   Enviar
                 </Button>
               </Form>
@@ -205,6 +220,13 @@ function ContactSection() {
           </Formik>
         </Grid>
       </Grid>
+
+      {/* Snackbar for Alerts */}
+      <Snackbar  sx={{width:'100%', height:'100vh', display:'flex', justifyContent:'center'}}  open={alert.open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity={alert.severity} sx={{ width:'50%' }}>
+          {alert.message}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 }
