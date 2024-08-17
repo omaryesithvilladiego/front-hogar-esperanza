@@ -1,28 +1,58 @@
-import React, { useState } from 'react';
-import { Grid, Typography, TextField, Button, Box, Alert, Snackbar } from '@mui/material';
+import React, { useState, useRef, useEffect } from 'react';
+import { Grid, Typography, TextField, Button, Box, Alert, Snackbar, CircularProgress } from '@mui/material';
 import { Formik, Form, Field } from 'formik';
-import * as Yup from 'yup';
 import axios from 'axios';
 import "../styles/contacto.css";
 import validationSchema from './validationSchema';
 
 function ContactSection() {
   const [alert, setAlert] = useState({ open: false, message: '', severity: '' });
+  const [loading, setLoading] = useState(false);
+  const loaderRef = useRef(null);
 
   const handleClose = () => {
     setAlert({ ...alert, open: false });
   };
 
+  useEffect(() => {
+    if (loading && loaderRef.current) {
+      loaderRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, [loading]);
+
   return (
     <Box className="contact-section" sx={{ height: '140vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+
+      
       <Grid container spacing={2} className="contact-container" sx={{ width: '80%', backgroundColor: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', borderRadius: '1rem', padding: '2rem' }}>
+      {loading && (
+            <Box 
+              ref={loaderRef} 
+              sx={{ 
+                position: 'absolute', 
+                top: 0, 
+                left: 0, 
+                right: 0, 
+                bottom: 0, 
+                display: 'flex', 
+                justifyContent: 'center', 
+                alignItems: 'center', 
+                backgroundColor: 'rgba(0, 0, 0, 0.1)', 
+                borderRadius: '1rem', 
+                zIndex: 1 
+              }}
+            >
+              <CircularProgress color="inherit" />
+            </Box>
+          )}
         
         {/* Texto de la izquierda */}
-        <Grid item xs={12} md={6}>
-          <Typography fontSize={{xs: '8vw', md: '4vw'}} variant="h3" color="white" gutterBottom>
+        <Grid item xs={12} md={6} sx={{ position: 'relative' }}>
+        
+          <Typography fontSize={{ xs: '8vw', md: '4vw' }} variant="h3" color="white" gutterBottom>
             Contáctanos
           </Typography>
-          <Typography width={ {md:'60%'  }} variant="body1" color="white" paragraph>
+          <Typography width={{ md: '60%' }} variant="body1" color="white" paragraph>
             Contáctanos hoy mismo para obtener más información sobre nuestros servicios y programas diseñados para mejorar la calidad de vida de los adultos mayores. Nuestro equipo de profesionales estará encantado de atenderte y guiarte a través del proceso de inscripción.
           </Typography>
         </Grid>
@@ -38,20 +68,18 @@ function ContactSection() {
               plan: '',
             }}
             validationSchema={validationSchema}
-            onSubmit={async (values) => {
-              
+            onSubmit={async (values, { resetForm }) => {
+              setLoading(true);
               try {
                 const response = await axios.post('https://hogar-esperanza-back.onrender.com/create-user', values);
                 setAlert({ open: true, message: response.data, severity: 'success' });
+                resetForm();
               } catch (error) {
                 console.log(error.response);
                 setAlert({ open: true, message: error.response.data, severity: 'error' });
-
+              } finally {
+                setLoading(false);
               }
-                
-                
-                
-             
             }}
           >
             {({ errors, touched }) => (
@@ -222,8 +250,8 @@ function ContactSection() {
       </Grid>
 
       {/* Snackbar for Alerts */}
-      <Snackbar  sx={{width:'100%', height:'100vh', display:'flex', justifyContent:'center'}}  open={alert.open} autoHideDuration={6000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity={alert.severity} sx={{ width:'50%' }}>
+      <Snackbar sx={{ width: '100%', height: '100vh', display: 'flex', justifyContent: 'center' }} open={alert.open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity={alert.severity} sx={{ width: '50%' }}>
           {alert.message}
         </Alert>
       </Snackbar>

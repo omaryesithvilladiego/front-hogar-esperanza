@@ -5,7 +5,7 @@ function MisionVision() {
   return (
     <Box sx={{ p: 2, backgroundColor: 'transparent', color: 'white', height: { md: '100vh' }, display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
       <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
+        <Grid id='mision' item xs={12} md={6}>
           <Box sx={{ p: 2, borderRadius: '8px', height: '100%', width: '80%', margin: '0 auto' }}>
             <Typography fontFamily="borel, cursive" variant="h2" gutterBottom>
               misión

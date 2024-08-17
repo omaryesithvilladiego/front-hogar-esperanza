@@ -17,8 +17,8 @@ const validationSchema = Yup.object().shape({
     .matches(emailRegex, 'El correo electrónico debe ser válido'),
 
   phone: Yup.string()
-    .required('El número de teléfono celular es requerido')
-    .matches(phoneRegex, 'El número de teléfono celular debe tener 10 dígitos'),
+    .required('El número de teléfono celular es requerido'),
+    // .matches(phoneRegex, 'El número de teléfono celular debe tener 10 dígitos'),
 
   age: Yup.number()
     .required('La edad es requerida')
@@ -27,10 +27,10 @@ const validationSchema = Yup.object().shape({
 
   plan: Yup.string()
     .required('El plan es requerido')
-    .oneOf(
-      ['hogar permanente compartido', 'hogar permanente VIP', 'hogar permanente VIP compartido', 'hogar vacaciones'],
-      'El plan no es correcto'
-    )
+    // .oneOf(
+    //   ['hogar permanente compartido', 'hogar permanente VIP', 'hogar permanente VIP compartido', 'hogar vacaciones'],
+    //   'El plan no es correcto'
+    // )
 });
 
 

@@ -33,8 +33,7 @@ function Nav() {
       
           </Stack>
           <Box width={'100%'} display={'flex'} sx={{ display: { xs: 'none', md: 'flex' , margin:0, justifyContent:'flex-end'}}}>
-            <Button color="inherit">Donar</Button>
-            <Button color="inherit">Sobre Nosotros</Button>
+          <Button><a href="#mision">SOBRE NOSOTROS</a></Button> 
             <Button color="inherit">Galería</Button>
           </Box>
         </Toolbar>
