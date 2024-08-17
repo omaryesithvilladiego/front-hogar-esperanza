@@ -34,6 +34,7 @@ function Nav() {
           </Stack>
           <Box width={'100%'} display={'flex'} sx={{ display: { xs: 'none', md: 'flex' , margin:0, justifyContent:'flex-end'}}}>
           <Button><a href="#mision">SOBRE NOSOTROS</a></Button> 
+          <Button> <a href="#contacto">Contactanos</a> </Button>
             <Button color="inherit">Galería</Button>
           </Box>
         </Toolbar>

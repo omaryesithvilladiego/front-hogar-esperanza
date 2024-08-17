@@ -2,3 +2,10 @@
     scale: 1.5;
     transition: scale .5s ease-in;
 }
+
+a {
+    color: white;
+    list-style: none;
+    line-height: none;
+    text-decoration: none;
+}

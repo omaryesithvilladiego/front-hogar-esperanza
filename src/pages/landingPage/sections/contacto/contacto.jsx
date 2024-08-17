@@ -9,46 +9,44 @@ function ContactSection() {
   const [alert, setAlert] = useState({ open: false, message: '', severity: '' });
   const [loading, setLoading] = useState(false);
   const loaderRef = useRef(null);
+  const contactRef = useRef(null); // Ref para el contenedor de contacto
 
   const handleClose = () => {
     setAlert({ ...alert, open: false });
   };
 
   useEffect(() => {
-    if (loading && loaderRef.current) {
-      loaderRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (window.location.hash === '#contacto' && contactRef.current) {
+      contactRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
-  }, [loading]);
+  }, []);
 
   return (
-    <Box className="contact-section" sx={{ height: '140vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-
-      
+    <Box id="contacto" ref={contactRef} className="contact-section" sx={{ height: '140vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <Grid container spacing={2} className="contact-container" sx={{ width: '80%', backgroundColor: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', borderRadius: '1rem', padding: '2rem' }}>
-      {loading && (
-            <Box 
-              ref={loaderRef} 
-              sx={{ 
-                position: 'absolute', 
-                top: 0, 
-                left: 0, 
-                right: 0, 
-                bottom: 0, 
-                display: 'flex', 
-                justifyContent: 'center', 
-                alignItems: 'center', 
-                backgroundColor: 'rgba(0, 0, 0, 0.1)', 
-                borderRadius: '1rem', 
-                zIndex: 1 
-              }}
-            >
-              <CircularProgress color="inherit" />
-            </Box>
-          )}
-        
+        {loading && (
+          <Box 
+            ref={loaderRef} 
+            sx={{ 
+              position: 'absolute', 
+              top: 0, 
+              left: 0, 
+              right: 0, 
+              bottom: 0, 
+              display: 'flex', 
+              justifyContent: 'center', 
+              alignItems: 'center', 
+              backgroundColor: 'rgba(0, 0, 0, 0.1)', 
+              borderRadius: '1rem', 
+              zIndex: 1 
+            }}
+          >
+            <CircularProgress color="inherit" />
+          </Box>
+        )}
+
         {/* Texto de la izquierda */}
         <Grid item xs={12} md={6} sx={{ position: 'relative' }}>
-        
           <Typography fontSize={{ xs: '8vw', md: '4vw' }} variant="h3" color="white" gutterBottom>
             Contáctanos
           </Typography>
@@ -59,7 +57,7 @@ function ContactSection() {
 
         {/* Formulario de la derecha */}
         <Grid item xs={12} md={6}>
-          <Formik
+          <Formik 
             initialValues={{
               fullName: '',
               email: '',
@@ -139,8 +137,8 @@ function ContactSection() {
                       color: 'white',
                     }
                   }}
-                />
-                <Field
+                /> 
+                <Field 
                   as={TextField}
                   name="phone"
                   label="Teléfono"

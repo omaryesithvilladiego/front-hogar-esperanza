@@ -35,7 +35,7 @@ function Planes() {
                     marginTop={4}
                     color={'white'}
                 >
-                    Planes
+                    planes
                 </Typography>
                 <Box
                     display="grid"
