@@ -1,5 +1,5 @@
 import {
-    BrowserRouter,
+   
     Switch,
     Route,
     Link,
@@ -10,14 +10,14 @@ import {
 
   function Router() {
     return (
-      <BrowserRouter>
+     
         <Switch>
           <Route exact path="/">
             <LandingPage />
           </Route>
         
         </Switch>
-      </BrowserRouter>
+    
     );
   }
 
