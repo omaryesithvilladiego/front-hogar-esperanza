@@ -6,6 +6,7 @@ import '../sections/styles/gallery.css';
 import ViewAgendaIcon from '@mui/icons-material/ViewAgenda';
 import ViewColumnIcon from '@mui/icons-material/ViewColumn';
 import SplitscreenIcon from '@mui/icons-material/Splitscreen';
+
 const imageProps = {
   style: { width: '100%', height: '100%', objectFit: 'cover', borderRadius: '10px' },
   alt: 'image'

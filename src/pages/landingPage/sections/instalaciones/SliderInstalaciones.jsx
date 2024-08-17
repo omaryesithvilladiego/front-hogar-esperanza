@@ -1,16 +1,13 @@
-// Import Swiper React components
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay, Manipulation, Zoom } from 'swiper/modules';
-
-// Import Swiper styles
 import 'swiper/css';
-import 'swiper/css/navigation'; // Importa los estilos necesarios para Navigation
-import 'swiper/css/zoom'; // Importa los estilos necesarios para Zoom
+import 'swiper/css/navigation';
+import 'swiper/css/zoom';
 import { Typography } from '@mui/material';
-import "./instalaciones.css"
+import "./instalaciones.css";
 
 const additionalImages = [
-  // Agrega más URLs de imágenes aquí
   'https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/gallery%2Finstalacones%2FIMG_1749.jpg?alt=media&token=38053fb2-2a8e-45b4-875c-e02c36623c0b',
   'https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/gallery%2Finstalacones%2FIMG_1745.jpg?alt=media&token=208b584d-7dbc-45ba-abeb-f43509c6c978',
   'https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/gallery%2Finstalacones%2FIMG_1735.jpg?alt=media&token=c7290f67-0bed-493a-888b-0bc257590579',
@@ -24,81 +21,51 @@ const additionalImages = [
 const Instalaciones = () => {
 
   const handleSlideChange = (swiper) => {
-    // Obtén el índice del slide activo
     const activeIndex = swiper.activeIndex;
 
-
     if (swiper.params.slidesPerView === 3) {
-      // Obtén el slide activo usando el índice
       const centerSlide = swiper.slides[activeIndex + 1];
-      const inactiveSlide = swiper.slides[activeIndex]
-      const inactiveSlide2 = swiper.slides[activeIndex + 2]
+      const inactiveSlide1 = swiper.slides[activeIndex];
+      const inactiveSlide2 = swiper.slides[activeIndex + 2];
 
-      // Obtén el primer elemento hijo dentro del slide activo
-      const childElement = centerSlide.querySelector('.swiper-zoom-container');
-      const childElement2 = inactiveSlide.querySelector('.swiper-zoom-container');
-      const childElement3 = inactiveSlide2.querySelector('.swiper-zoom-container');
+      const centerChild = centerSlide.querySelector('.swiper-zoom-container');
+      const inactiveChild1 = inactiveSlide1.querySelector('.swiper-zoom-container');
+      const inactiveChild2 = inactiveSlide2.querySelector('.swiper-zoom-container');
 
+      inactiveChild1.style.scale = '1';
+      inactiveChild2.style.scale = '1';
+      inactiveChild2.style.zIndex = '0';
 
-      childElement2.style.scale = '1'
-      childElement3.style.scale = '1'
-      childElement3.style.zIndex = '0'
-
-
-
-      // Haz algo con el elemento hijo, por ejemplo, imprimirlo en la consola
-      childElement.style.transition = 'scale .5s ease'
-      childElement.style.scale = '1.25'
-      childElement.style.zIndex = '1000'
+      centerChild.style.transition = 'scale .5s ease';
+      centerChild.style.scale = '1.25';
+      centerChild.style.zIndex = '1000';
     }
-
-
   };
 
-
   return (
-    <div style={{ height: '100vh', width: '100%', margin: '0 auto', display: 'flex', alignItems: 'center', flexDirection: 'column', backgroundColor: 'rgba(213, 225, 221, 0.85)' }}>
-
-      <Typography marginTop={'10rem'}
-        component="h2"
-        variant="h2"
-        fontFamily="borel, cursive"
-        textAlign="center"
-        gutterBottom
-        color={'#19a877'}
-        fontSize={{xs:'8vw', md:'4vw'}}
-      >
+    <div style={{ height: '100%', width: '100%', margin: '0 auto', display: 'flex', alignItems: 'center', flexDirection: 'column', backgroundColor: 'rgba(213, 225, 221, 0.85)' }}>
+      <Typography marginTop={'10rem'} component="h2" variant="h2" fontFamily="borel, cursive" textAlign="center" gutterBottom color={'#19a877'} fontSize={{xs:'8vw', md:'4vw'}}>
         instalaciones
       </Typography>
-      <div style={{ height: '100vh', width: '95%', margin: '0 auto', display: 'flex', alignItems: 'center', position: 'absolute', }}>
-
-
+      <div style={{ height: '100%', width: '95%', margin: '0 auto', display: 'flex', alignItems: 'center'}}>
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay, Manipulation, Zoom]}
           spaceBetween={100}
           slidesPerView={1}
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
-          navigation // Habilita las flechas de navegación
-          onSwiper={(slide) => console.log(slide)
-          }
-
+          navigation
+          onSwiper={(slide) => console.log(slide)}
           onSlideChange={handleSlideChange}
           zoom={true}
           breakpoints={{
-            640: {
-              slidesPerView: 1,
-            },
-            768: {
-              slidesPerView: 2,
-            },
-            1024: {
-              slidesPerView: 3,
-            },
+            640: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
           }}
         >
           {additionalImages.map((item, index) => (
-            <SwiperSlide style={{ height: '35rem', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'transparent' }} key={index}>
+            <SwiperSlide key={index} style={{ height: '35rem', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'transparent' }}>
               <div className="swiper-zoom-container" style={{ background: `url(${item})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center', width: '40rem', height: '18rem', borderRadius: '2rem' }}></div>
             </SwiperSlide>
           ))}

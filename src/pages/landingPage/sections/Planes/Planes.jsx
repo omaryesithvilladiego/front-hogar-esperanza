@@ -5,17 +5,14 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import programs from './programs';
 
 function Planes() {
-    // Estado que mantiene el índice del slide actual para cada tarjeta
     const [currentSlides, setCurrentSlides] = useState(programs.map(() => 0));
 
-    // Función para cambiar al siguiente slide en una tarjeta específica
     const handleNextSlide = (index, totalSlides) => () => {
         setCurrentSlides((prevSlides) =>
             prevSlides.map((slide, i) => (i === index ? (slide + 1) % totalSlides : slide))
         );
     };
 
-    // Función para cambiar al slide anterior en una tarjeta específica
     const handlePrevSlide = (index, totalSlides) => () => {
         setCurrentSlides((prevSlides) =>
             prevSlides.map((slide, i) => (i === index ? (slide - 1 + totalSlides) % totalSlides : slide))
@@ -23,8 +20,20 @@ function Planes() {
     };
 
     return (
-        <Box py={4} sx={{ background: " url('https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/IMG_1238.PNG?alt=media&token=b1061879-50cf-4ae3-b8ce-f0153aba3bf6')", color:'#19a877', textAlign:'center', backgroundPosition:'center', backgroundSize:'cover', backgroundAttachment:'fixed', paddingBottom:'4rem',
-            height:{md:'140vh'} }}>
+        <Box
+            py={4}
+            sx={{
+                background: "url('https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/IMG_1238.PNG?alt=media&token=b1061879-50cf-4ae3-b8ce-f0153aba3bf6')",
+                color: '#19a877',
+                textAlign: 'center',
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+                backgroundAttachment: 'fixed',
+                paddingBottom: '4rem',
+                minHeight: '100vh',  // Altura mínima de la pantalla
+                overflowY: 'auto',  // Permitir scroll vertical si es necesario
+            }}
+        >
             <Container>
                 <Typography
                     component="h2"
@@ -47,11 +56,11 @@ function Planes() {
                             key={programa.id}
                             sx={{
                                 padding: 3,
-                                display:'flex',
-                                height:'100%',
-                                flexDirection:'column',
-                                justifyContent:'space-between',
-                                gap:'1rem',
+                                display: 'flex',
+                                height: '100%',
+                                flexDirection: 'column',
+                                justifyContent: 'space-between',
+                                gap: '1rem',
                                 border: '1px solid #ddd',
                                 borderRadius: '2rem',
                                 backgroundColor: 'rgba(255, 255, 255, .9)',
@@ -95,7 +104,7 @@ function Planes() {
                                         textAlign: 'center',
                                     }}
                                 >
-                                    <Typography variant="body1" sx={{ fontSize: '16px', color: '#333', textAlign:'center', width:'10rem' }}>
+                                    <Typography variant="body1" sx={{ fontSize: '16px', color: '#333', textAlign: 'center', width: '10rem' }}>
                                         {programa.incluye[currentSlides[index]]}
                                     </Typography>
                                 </Box>

@@ -22,7 +22,7 @@ function ContactSection() {
   }, []);
 
   return (
-    <Box id="contacto" ref={contactRef} className="contact-section" sx={{ height: '140vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <Box id="contacto" ref={contactRef} className="contact-section" sx={{ height: {md:'170vh'}, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <Grid container spacing={2} className="contact-container" sx={{ width: '80%', backgroundColor: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', borderRadius: '1rem', padding: '2rem' }}>
         {loading && (
           <Box 
@@ -56,7 +56,7 @@ function ContactSection() {
         </Grid>
 
         {/* Formulario de la derecha */}
-        <Grid item xs={12} md={6}>
+        <Grid  item xs={12} md={6}>
           <Formik 
             initialValues={{
               fullName: '',

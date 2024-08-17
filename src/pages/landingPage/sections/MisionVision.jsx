@@ -3,7 +3,18 @@ import { Grid, Typography, Box } from '@mui/material';
 
 function MisionVision() {
   return (
-    <Box sx={{ p: 2, backgroundColor: 'transparent', color: 'white', height: { md: '100vh' }, display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
+    <Box
+      sx={{
+        p: 2,
+        backgroundColor: 'transparent',
+        color: 'white',
+        height: { sm:'100%',  md: '100%', lg:'100vh' }, // Altura específica para pantallas medianas y más grandes
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+      }}
+    >
       <Grid container spacing={3}>
         <Grid id='mision' item xs={12} md={6}>
           <Box sx={{ p: 2, borderRadius: '8px', height: '100%', width: '80%', margin: '0 auto' }}>

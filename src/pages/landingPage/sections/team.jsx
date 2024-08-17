@@ -3,8 +3,8 @@ import { Grid, Box, Typography, Button } from '@mui/material';
 
 function NuestroEquipo() {
   return (
-    <Box sx={{ width: '100%', background: 'rgba(10,140,96,0.6)', color: 'white' }}>
-      <Grid container spacing={2}>
+    <Box sx={{ width: '100%', height:'100%', background: 'rgba(10,140,96,0.6)', color: 'white' }}>
+      <Grid container style={{}} spacing={2}>
         <Grid item xs={12}>
           <Box
             sx={{
@@ -15,7 +15,7 @@ function NuestroEquipo() {
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat',
-              height: '50vh'
+              height: '30rem'
             }}
           >
           </Box>
@@ -28,7 +28,7 @@ function NuestroEquipo() {
               padding: '1rem',
               backgroundColor: 'white',
               textAlign: 'center',
-              height: { md: '50vh' },
+              height: { md: '30rem' },
               background: 'transparent',
               display: 'flex',
               flexDirection: 'column',
