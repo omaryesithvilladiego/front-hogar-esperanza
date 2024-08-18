@@ -55,7 +55,7 @@ const Instalaciones = () => {
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
           navigation
-          onSwiper={(slide) => console.log(slide)}
+          onSwiper={(slide) => slide}
           onSlideChange={handleSlideChange}
           zoom={true}
           breakpoints={{

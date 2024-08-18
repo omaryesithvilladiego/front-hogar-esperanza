@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid, Box, Typography, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 function NuestroEquipo() {
   return (
@@ -47,14 +48,15 @@ function NuestroEquipo() {
               queridos. Visítanos y conoce nuestro centro, nuestros servicios y nuestro enfoque personalizado. Estamos aquí para apoyarte y
               brindar esperanza y calidad de vida a los adultos mayores. ¡Te esperamos!
             </Typography>
-            <Button
-              sx={{
+            <Link to='/team'
+              style={{
                 backgroundColor: 'transparent',
                 color: 'white',
                 border: '1px solid white', // Opcional: Agrega un borde blanco
                 padding: '0.5rem 1rem', // Opcional: Ajusta el padding
                 textTransform: 'none', // Opcional: Evita que el texto se transforme a mayúsculas
                 boxShadow: 'none', // Elimina el efecto de sombra predeterminado
+                borderRadius:'.5rem',
                 '&:hover': {
                   backgroundColor: 'rgba(255, 255, 255, 0.2)', // Cambia el color de fondo al hacer hover
                   boxShadow: 'none' // Elimina el efecto de sombra al hacer hover
@@ -62,7 +64,7 @@ function NuestroEquipo() {
               }}
             >
               Conoce al equipo
-            </Button>
+            </Link>
           </Box>
         </Grid>
       </Grid>
