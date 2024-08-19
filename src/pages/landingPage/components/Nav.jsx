@@ -18,7 +18,7 @@ function Nav() {
 
   return (
     <>
-      <AppBar position="fixed" sx={{ backgroundColor: 'rgba(1,1,1,0.5)', boxShadow: 'none', padding:'1rem'}}>
+      <AppBar position="fixed" sx={{ backgroundColor: 'rgba(1,1,1,0.2)', boxShadow: 'none', padding:'1rem'}}>
         <Toolbar >
 
         <Stack justifyContent={'space-between'} width={'100%'} flexDirection={'row'}>

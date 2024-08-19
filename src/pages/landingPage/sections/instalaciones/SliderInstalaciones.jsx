@@ -51,7 +51,6 @@ const Instalaciones = () => {
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay, Manipulation, Zoom]}
           spaceBetween={100}
-          slidesPerView={1}
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
           navigation
