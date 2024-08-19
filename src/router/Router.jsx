@@ -16,7 +16,7 @@ import Team from "../pages/landingPage/team/Team";
           <Route exact path="/">
             <LandingPage />
           </Route>
-          <Route path="/team">
+          <Route exact path="/team">
           <Team />
           </Route>
         
