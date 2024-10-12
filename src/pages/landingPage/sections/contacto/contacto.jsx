@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Grid, Typography, TextField, Button, Box, Alert, Snackbar, CircularProgress } from '@mui/material';
+import { Grid, Typography, TextField, Button, Box, Alert, Snackbar, CircularProgress, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 import { Formik, Form, Field } from 'formik';
 import axios from 'axios';
 import "../styles/contacto.css";
@@ -9,7 +9,7 @@ function ContactSection() {
   const [alert, setAlert] = useState({ open: false, message: '', severity: '' });
   const [loading, setLoading] = useState(false);
   const loaderRef = useRef(null);
-  const contactRef = useRef(null); // Ref para el contenedor de contacto
+  const contactRef = useRef(null);
 
   const handleClose = () => {
     setAlert({ ...alert, open: false });
@@ -22,7 +22,7 @@ function ContactSection() {
   }, []);
 
   return (
-    <Box id="contacto" ref={contactRef} className="contact-section" sx={{ height: {xs:'140vh',md:'160vh'}, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <Box id="contacto" ref={contactRef} className="contact-section" sx={{ height: { xs: '140vh', md: '160vh' }, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <Grid container spacing={2} className="contact-container" sx={{ width: '80%', backgroundColor: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', borderRadius: '1rem', padding: '2rem' }}>
         {loading && (
           <Box 
@@ -45,18 +45,16 @@ function ContactSection() {
           </Box>
         )}
 
-        {/* Texto de la izquierda */}
         <Grid item xs={12} md={6} sx={{ position: 'relative' }}>
-          <Typography fontSize={{ xs: '8vw', md: '4vw' }} variant="h3" color="white" gutterBottom>
-            Contáctanos
+          <Typography style={{fontFamily:"borel, cursive"}} fontSize={{ xs: '8vw', md: '4vw', }} variant="h3" color="white" gutterBottom>
+            contáctanos
           </Typography>
           <Typography width={{ md: '60%' }} variant="body1" color="white" paragraph>
             Contáctanos hoy mismo para obtener más información sobre nuestros servicios y programas diseñados para mejorar la calidad de vida de los adultos mayores. Nuestro equipo de profesionales estará encantado de atenderte y guiarte a través del proceso de inscripción.
           </Typography>
         </Grid>
 
-        {/* Formulario de la derecha */}
-        <Grid  item xs={12} md={6}>
+        <Grid item xs={12} md={6}>
           <Formik 
             initialValues={{
               fullName: '',
@@ -67,9 +65,10 @@ function ContactSection() {
             }}
             validationSchema={validationSchema}
             onSubmit={async (values, { resetForm }) => {
+              console.log(values);
               setLoading(true);
               try {
-                const response = await axios.post('https://hogar-esperanza-back.onrender.com/create-user', values);
+                const response = await axios.post('http://localhost:3000/create-user', values);
                 setAlert({ open: true, message: response.data, severity: 'success' });
                 resetForm();
               } catch (error) {
@@ -80,7 +79,7 @@ function ContactSection() {
               }
             }}
           >
-            {({ errors, touched }) => (
+            {({ errors, touched, setFieldValue }) => (
               <Form className='form' style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <Field
                   as={TextField}
@@ -113,7 +112,7 @@ function ContactSection() {
                 <Field
                   as={TextField}
                   name="email"
-                  label="Correo"
+                  label="Correo electrónico"
                   variant="outlined"
                   fullWidth
                   error={touched.email && Boolean(errors.email)}
@@ -194,34 +193,38 @@ function ContactSection() {
                     }
                   }}
                 />
-                <Field
-                  as={TextField}
-                  name="plan"
-                  label="Plan que te interesa"
-                  variant="outlined"
-                  fullWidth
-                  error={touched.plan && Boolean(errors.plan)}
-                  helperText={touched.plan && errors.plan}
-                  InputProps={{
-                    sx: {
+
+                <FormControl fullWidth variant="outlined" error={touched.plan && Boolean(errors.plan)}>
+                  <InputLabel id="plan-label" sx={{ color: 'white' }}>Plan que te interesa</InputLabel>
+                  <Field
+                    as={Select}
+                    labelId="plan-label"
+                    name="plan"
+                    label="Plan que te interesa"
+                    onChange={(e) => setFieldValue('plan', e.target.value)}
+                    sx={{
                       background: 'transparent',
-                      border: 'none',
-                      borderBottom: '2px solid white',
                       color: 'white',
-                      outline: 'none',
-                      padding: '8px 0',
-                      boxShadow: 'none',
-                      '&:hover, &:focus': {
+                      '& .MuiSelect-select': {
+                        border: 'none',
+                        borderBottom: '2px solid white',
+                      },
+                      '&:hover .MuiSelect-select': {
                         borderBottomColor: '#90caf9',
-                      }
-                    }
-                  }}
-                  InputLabelProps={{
-                    sx: {
-                      color: 'white',
-                    }
-                  }}
-                />
+                      },
+                    }}
+                  >
+                    <MenuItem value={'Hogar permanente compartido'}>Hogar permanente compartido</MenuItem>
+                    <MenuItem value={'Hogar permanente VIP'}>Hogar permanente VIP</MenuItem>
+                    <MenuItem value={'Hogar de vacaciones'}>Hogar de vacaciones</MenuItem>
+                    <MenuItem value={'Hogar permanente VIP compartido'}>Hogar permanente VIP compartido</MenuItem>
+                    <MenuItem value={'Hogar cuidado diario'} >Hogar cuidado diario</MenuItem>
+                  </Field>
+                  {touched.plan && errors.plan && (
+                    <Typography variant="caption" color="error">{errors.plan}</Typography>
+                  )}
+                </FormControl>
+
                 <Button
                   sx={{
                     backgroundColor: 'transparent',
@@ -247,7 +250,6 @@ function ContactSection() {
         </Grid>
       </Grid>
 
-      {/* Snackbar for Alerts */}
       <Snackbar sx={{ width: '100%', height: '100vh', display: 'flex', justifyContent: 'center' }} open={alert.open} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose} severity={alert.severity} sx={{ width: '50%' }}>
           {alert.message}

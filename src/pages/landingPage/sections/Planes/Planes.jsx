@@ -8,7 +8,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/zoom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay, Manipulation, Zoom } from 'swiper/modules';
-import './planes.css'
+import './planes.css';
 
 function Planes() {
     const [currentSlides, setCurrentSlides] = useState(programs.map(() => 0));
@@ -40,7 +40,7 @@ function Planes() {
                 overflowY: 'auto',  // Permitir scroll vertical si es necesario
             }}
         >
-            <Container>
+            <Box style={{}}>
                 <Typography
                     component="h2"
                     variant="h2"
@@ -50,32 +50,33 @@ function Planes() {
                     marginTop={4}
                     color={'white'}
                 >
-                    Planes
+                    planes
                 </Typography>
                 <Swiper
                     modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay, Manipulation, Zoom]}
                     pagination={{ clickable: true }}
                     scrollbar={{ draggable: true }}
+                    style={{ width:'95vw'}}
                     navigation
                     spaceBetween={100}
-
                     breakpoints={{
                         640: { slidesPerView: 1 },
                         768: { slidesPerView: 2 },
-                        1024: { slidesPerView: 3 },
+                        1170: { slidesPerView: 2 },
+                        1250: { slidesPerView: 3 },
                     }}
                 >
                     {programs.map((programa, index) => (
                         <SwiperSlide key={programa.id}>
                             <Box
                                 sx={{
-                                    padding: 3,
-                                    marginTop:'4rem',
+                                    padding: 5.5,
+                                    marginTop: '4rem',
                                     display: 'flex',
-                                    height: '42rem',
+                                    height: '35rem',
                                     flexDirection: 'column',
                                     justifyContent: 'space-between',
-                                    gap: '1rem',
+                                    gap: '.2rem',
                                     border: '1px solid #ddd',
                                     borderRadius: '2rem',
                                     backgroundColor: 'rgba(255, 255, 255, .9)',
@@ -167,7 +168,7 @@ function Planes() {
                         </SwiperSlide>
                     ))}
                 </Swiper>
-            </Container>
+            </Box>
         </Box>
     );
 }

@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { Container, Typography, Grid, IconButton } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 const teamArray = [
-    { id: 1, background: 'red' },
-    { id: 2, background: 'blue' },
-    { id: 3, background: 'yellow' },
-    { id: 4, background: 'green' },
-    { id: 5, background: 'pink' },
+    { id: 1, background: 'https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/equipo%2FCARNETS%20HOGAR%20ESPERANZA%20(1).png?alt=media&token=7e92257d-5439-4f43-a4f8-a4751e06a2e3' },
+    { id: 2, background: 'https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/equipo%2FCARNETS%20HOGAR%20ESPERANZA%20(2).png?alt=media&token=63e32705-5db6-44f5-b621-7b0a2bd3a974' },
+    { id: 3, background: 'https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/equipo%2FCARNETS%20HOGAR%20ESPERANZA%20(3).png?alt=media&token=b089ceb3-8c39-4d98-b188-299ff798cf89' },
+    { id: 4, background: 'https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/equipo%2FCARNETS%20HOGAR%20ESPERANZA%20(4).png?alt=media&token=07959c88-6c57-4c9f-a609-3620d0b70550' },
 ];
 
 function Team() {
@@ -19,15 +19,18 @@ function Team() {
     };
 
     return (
-        <div>
-            <header style={{ height: '6rem', width: '100%', backgroundColor: 'red' }}>
-                <nav>
-                    <ul>
-                        <li></li>
-                    </ul>
-                </nav>
-            </header>
-            <main>
+        <div style={{display:'flex', justifyContent:'center', alignItems:'center', height:'100vh'}} >
+            <main >
+            <a style={{display:'flex', alignItems:'center'}} href="/">
+              <Container
+                className='contanier-palomita'
+                sx={{ margin: 0, width: '7rem', cursor: 'pointer' }}
+                maxWidth='md'
+                component={'img'}
+                src='https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/IMG_1190.PNG?alt=media&token=c313bd2e-b00c-413d-ac31-50201b059e73'
+              />
+              <ArrowBackIosNewIcon />
+            </a>
                 <Container style={{ marginTop: '1rem', display: 'flex', justifyContent: 'center', marginBottom: '1rem' }} maxWidth='md'>
                     <Typography fontSize={'4vw'} fontFamily={'borel, cursive'} color={'white'} variant="h1">Conoce al equipo</Typography>
                 </Container>
@@ -53,8 +56,8 @@ function Team() {
                                 item
                                 key={el.id} 
                                 style={{
-                                    backgroundColor: el.background,
-                                    height: isExpanded ? '600px' : isAnyExpanded ? 'auto' : '335px',
+                                    background: el.background,
+                                    height: isExpanded ? '680px' : isAnyExpanded ? 'auto' : '335px',
                                     borderRadius: '15px',
                                     transition: 'all 0.3s ease',
                                     gridColumn: {  md: isExpanded ? '1 / span 1' : 'auto' },
@@ -82,6 +85,7 @@ function Team() {
                                 >
                                     {isExpanded ? <RemoveIcon style={{ fontSize: '2.5rem', fontWeight:'bold', }} /> : <AddIcon style={{ fontSize: '2rem'}} />}
                                 </IconButton>
+                                <img style={{width:'100%'}} src={el.background}></img>
                             </Grid>
                         );
                     })}

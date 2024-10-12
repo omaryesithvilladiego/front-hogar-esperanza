@@ -1,9 +1,7 @@
-import React from 'react';
-import { AppBar, Toolbar, IconButton, Typography, Button, Box, Drawer, List, ListItem, ListItemText, Container, Stack } from '@mui/material';
+import React, { useState } from 'react';
+import { AppBar, Toolbar, IconButton, Button, Box, Drawer, List, ListItem, ListItemText, Container, Stack } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { useState } from 'react';
-import '../../landingPage/components/styles/nav.css'
-
+import '../../landingPage/components/styles/nav.css';
 
 function Nav() {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -18,43 +16,48 @@ function Nav() {
 
   return (
     <>
-      <AppBar position="fixed" sx={{ backgroundColor: 'rgba(1,1,1,0.2)', boxShadow: 'none', padding:'1rem'}}>
-        <Toolbar >
+      <AppBar position="fixed" sx={{ backgroundColor: 'rgba(1, 1, 1, 0.2)', boxShadow: 'none', padding: '1rem' }}>
+        <Toolbar>
+          <Stack justifyContent={'space-between'} width={'100%'} flexDirection={'row'}>
+            <IconButton sx={{ display: { lg: 'none', md: 'none' } }} edge="start" color="inherit" aria-label="menu" onClick={handleDrawerOpen}>
+              <MenuIcon />
+            </IconButton>
 
-        <Stack justifyContent={'space-between'} width={'100%'} flexDirection={'row'}>
-          <IconButton sx={{display:{lg:'none', md:'none', }}} edge="start" color="inherit" aria-label="menu" onClick={handleDrawerOpen}>
-            <MenuIcon />
-          </IconButton>
+            <a href="#home">
+              <Container
+                className='contanier-palomita'
+                sx={{ margin: 0, width: '7rem', cursor: 'pointer' }}
+                maxWidth='md'
+                component={'img'}
+                src='https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/IMG_1190.PNG?alt=media&token=c313bd2e-b00c-413d-ac31-50201b059e73'
+              />
+            </a>
 
-          <Container className='contanier-palomita' sx={{ margin:0,width:'7rem'}} maxWidth='md' component={'img'} src='https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/IMG_1190.PNG?alt=media&token=c313bd2e-b00c-413d-ac31-50201b059e73'  >
-          
-          </Container>
-
-      
+            <Box width={'100%'} display={{ xs: 'none', md: 'flex', color:'white' }} sx={{ justifyContent: 'flex-end' }}>
+              <Button component="a" style={{color:'white'}} href="#mision">SOBRE NOSOTROS</Button>
+              <Button component="a" style={{color:'white'}} href="#contacto">CONTÁCTANOS</Button>
+              <Button component="a"  href="#gallery">GALERÍA</Button>
+            </Box>
           </Stack>
-          <Box width={'100%'} display={'flex'} sx={{ display: { xs: 'none', md: 'flex' , margin:0, justifyContent:'flex-end'}}}>
-          <Button><a href="#mision">SOBRE NOSOTROS</a></Button> 
-          <Button> <a href="#contacto">Contactanos</a> </Button>
-            <Button color="inherit">Galería</Button>
-          </Box>
         </Toolbar>
       </AppBar>
+      
       <Drawer anchor="left" open={drawerOpen} onClose={handleDrawerClose}>
         <Box
-          sx={{color:'white', width: 250,backgroundColor:'rgba(3,162,108,255)', height:'100vh'  }}
+          sx={{ color: 'white', width: 250, backgroundColor: 'rgba(3,162,108,255)', height: '100vh' }}
           role="presentation"
           onClick={handleDrawerClose}
           onKeyDown={handleDrawerClose}
         >
           <List>
-            <ListItem button>
-              <ListItemText primary="Donar" />
+            <ListItem button component="a" href="#gallery">
+              <ListItemText primary="Galería" />
             </ListItem>
-            <ListItem button>
+            <ListItem button component="a" href="#mision">
               <ListItemText primary="Sobre Nosotros" />
             </ListItem>
-            <ListItem button>
-              <ListItemText primary="Galería" />
+            <ListItem button component="a" href="#contacto">
+              <ListItemText primary="Contáctanos" />
             </ListItem>
           </List>
         </Box>
