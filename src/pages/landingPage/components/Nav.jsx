@@ -36,7 +36,7 @@ function Nav() {
             <Box width={'100%'} display={{ xs: 'none', md: 'flex', color:'white' }} sx={{ justifyContent: 'flex-end' }}>
               <Button component="a" style={{color:'white'}} href="#mision">SOBRE NOSOTROS</Button>
               <Button component="a" style={{color:'white'}} href="#contacto">CONTÁCTANOS</Button>
-              <Button component="a"  href="#gallery">GALERÍA</Button>
+              <Button component="a" style={{color:'white'}} href="#gallery">GALERÍA</Button>
             </Box>
           </Stack>
         </Toolbar>
