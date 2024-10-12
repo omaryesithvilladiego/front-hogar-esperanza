@@ -6,6 +6,7 @@ import MisionVision from "./sections/MisionVision.jsx";
 import Planes from "./sections/Planes/Planes.jsx";
 import ContactSection from "./sections/contacto/contacto.jsx";
 import NuestroEquipo from "./sections/team.jsx";
+import SocialMedia from "./components/social-media/SocialMedia.jsx";
 
 
 
@@ -13,6 +14,7 @@ function LandingPage() {
     return ( 
     
     <div>
+  <SocialMedia />
         <Nav />
         <Inicio />
         <Gallery />
@@ -21,6 +23,7 @@ function LandingPage() {
         <MisionVision />
         <NuestroEquipo />
         <ContactSection />
+      
 
     </div> );
 }
