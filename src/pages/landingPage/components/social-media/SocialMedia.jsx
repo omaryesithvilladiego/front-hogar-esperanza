@@ -17,8 +17,25 @@ function SocialMedia() {
                 <div style={{ position: 'fixed', bottom: 16, right: 16, zIndex: 1000 }}>
                     <SpeedDial 
                         ariaLabel="SpeedDial basic example"
-                        icon={<SpeedDialIcon sx={{ bgcolor: 'rgba(3,162,108,255)', width:'100%', height:'100%', display:'flex', justifyContent:'center', alignItems:'center', borderRadius:'4rem' }} />} // Cambia el color de fondo e ícono
-                        sx={{ overflow:'hidden', display:'flex', }} // Cambia el color de fondo del SpeedDial
+                        icon={
+                            <SpeedDialIcon 
+                                sx={{ 
+                                    bgcolor: 'rgba(3,162,108,255)', 
+                                    width: '100%', 
+                                    height: '100%', 
+                                    display: 'flex', 
+                                    justifyContent: 'center', 
+                                    alignItems: 'center', 
+                                    borderRadius: '4rem', 
+                                    boxShadow:'none'
+                                }} 
+                            />
+                        }
+                        sx={{ 
+                            overflow: 'hidden', 
+                            display: 'flex', 
+                            boxShadow: 'none' // Quitar la sombra por defecto
+                        }}
                     >
                         {actions.map((action) => (
                             <SpeedDialAction
@@ -30,7 +47,7 @@ function SocialMedia() {
                     </SpeedDial>
                 </div>
             ) : (
-                <Stack top={'50%'} left={'95%'} gap={'4rem'} style={{ color: 'white' }} position={'fixed'}>
+                <Stack top={'50%'} left={'95%'} gap={'4rem'} style={{ color: 'white', zIndex: '1000' }} position={'fixed'}>
                     <Instagram fontSize="large" />
                     <Facebook fontSize="large" />
                     <WhatsApp fontSize="large" />
