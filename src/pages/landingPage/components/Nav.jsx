@@ -18,16 +18,15 @@ function Nav() {
     <>
       <AppBar position="fixed" sx={{ backgroundColor: 'rgba(1, 1, 1, 0.2)', boxShadow: 'none', padding: '1rem' }}>
         <Toolbar>
-          <Stack justifyContent={'space-between'} width={'100%'} flexDirection={'row'}>
+          <Stack alignItems={'center'} justifyContent={'space-between'} width={'100%'} flexDirection={'row'}>
             <IconButton sx={{ display: { lg: 'none', md: 'none' } }} edge="start" color="inherit" aria-label="menu" onClick={handleDrawerOpen}>
               <MenuIcon />
             </IconButton>
 
             <a href="#home">
-              <Container
+              <Box
                 className='contanier-palomita'
-                sx={{ margin: 0, width: '7rem', cursor: 'pointer' }}
-                maxWidth='md'
+                sx={{ margin: 0, width:{xs:'2rem', lg:'5rem'}, cursor: 'pointer' }}
                 component={'img'}
                 src='https://firebasestorage.googleapis.com/v0/b/hogaresperanza-8f8ea.appspot.com/o/IMG_1190.PNG?alt=media&token=c313bd2e-b00c-413d-ac31-50201b059e73'
               />
