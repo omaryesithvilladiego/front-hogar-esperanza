@@ -24,6 +24,7 @@ import  Users  from "../private-pages/Users";
           </Route>
           <Route exact path='/login'> <LoginPage /> </Route>
           <PrivateRouter exact path='/users' component={Users} /> 
+          <Route exact path='/*' component={<>No existe la pagina</>}> </Route>
         
         </Switch>
     
