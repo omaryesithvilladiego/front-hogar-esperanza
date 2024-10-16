@@ -50,7 +50,7 @@ function SocialMedia() {
                     </SpeedDial>
                 </div>
             ) : (
-                <Stack top={'40%'} left={'95%'} gap={'4rem'} style={{ color: 'white', zIndex: '1000' }} position={'fixed'}>
+                <Stack top={'40%'} left={'96%'} gap={'4rem'} style={{ color: 'white', zIndex: '1000' }} position={'fixed'}>
                     <Box component={'a'} href={'https://www.instagram.com/hogaresperanza.mtr/profilecard/?igsh=YWw0NTd1NWw2eDJ1'} target='_blank'>
                     <Instagram fontSize="large" />
 
