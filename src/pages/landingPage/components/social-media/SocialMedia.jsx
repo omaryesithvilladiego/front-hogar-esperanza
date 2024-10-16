@@ -1,10 +1,13 @@
 import { Facebook, Instagram, WhatsApp } from "@mui/icons-material";
 import { Box, SpeedDial, SpeedDialAction, SpeedDialIcon, Stack, useMediaQuery } from "@mui/material";
+import { LogoTiktok } from "../../../../../public/logo-tiktok-svgrepo-com";
 
 const actions = [
-    { icon: <Instagram sx={{ color: 'purple' }} />, name: 'Instagram' },
-    { icon: <Facebook sx={{ color: 'blue' }} />, name: 'Facebook' },
+    { icon: <Instagram sx={{ color: 'purple' }} />, name: 'Instagram', link:'https://www.instagram.com/hogaresperanza.mtr/profilecard/?igsh=YWw0NTd1NWw2eDJ1' },
+    { icon: <Facebook sx={{ color: 'blue' }} />, name: 'Facebook', link:'https://www.facebook.com/share/GQntcxkNkuwqfqFf/?mibextid=LQQJ4d' },
     { icon: <WhatsApp sx={{ color: 'green' }} />, name: 'WhatsApp' },
+    {icon: <div style={{color:'white', cursor:'pointer',width: '30px',
+    height: '2rem'}}> {<LogoTiktok color={'#000000'} />}</div>, name:'TikTok', link:'https://www.tiktok.com/@hogar.esperanza?_t=8qUdqqrzFME&_r=1'}
 ];
 
 function SocialMedia() {
@@ -14,7 +17,7 @@ function SocialMedia() {
     return (
         <Box>
             {!isLargeScreen ? (
-                <div style={{ position: 'fixed', bottom: 16, right: 16, zIndex: 1000 }}>
+                <div style={{ position: 'fixed', bottom: 30, right: 16, zIndex: 1000, borderRadius: '4rem', }}>
                     <SpeedDial 
                         ariaLabel="SpeedDial basic example"
                         icon={
@@ -38,7 +41,7 @@ function SocialMedia() {
                         }}
                     >
                         {actions.map((action) => (
-                            <SpeedDialAction
+                            <SpeedDialAction target='_blank' component={'a'} href={action.link}
                                 key={action.name}
                                 icon={action.icon}
                                 tooltipTitle={action.name}
@@ -47,10 +50,23 @@ function SocialMedia() {
                     </SpeedDial>
                 </div>
             ) : (
-                <Stack top={'50%'} left={'95%'} gap={'4rem'} style={{ color: 'white', zIndex: '1000' }} position={'fixed'}>
+                <Stack top={'40%'} left={'95%'} gap={'4rem'} style={{ color: 'white', zIndex: '1000' }} position={'fixed'}>
+                    <Box component={'a'} href={'https://www.instagram.com/hogaresperanza.mtr/profilecard/?igsh=YWw0NTd1NWw2eDJ1'} target='_blank'>
                     <Instagram fontSize="large" />
+
+                    </Box>
+                    <Box component={'a'} target="_blank" href="https://www.facebook.com/share/GQntcxkNkuwqfqFf/?mibextid=LQQJ4d">
                     <Facebook fontSize="large" />
+                    </Box>
+                  
+                    <Box component={'a'} href="https://wa.me/3013743729" target="_blank">
                     <WhatsApp fontSize="large" />
+                    </Box>
+                  
+                    <Box component={'a'} target="_blank" href="https://www.tiktok.com/@hogar.esperanza?_t=8qUdqqrzFME&_r=1"> <LogoTiktok color={'white'} /></Box>
+                  
+                   
+                    
                 </Stack>
             )}
         </Box>

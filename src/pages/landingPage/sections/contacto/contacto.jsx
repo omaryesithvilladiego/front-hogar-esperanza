@@ -69,7 +69,8 @@ function ContactSection() {
               setLoading(true);
               try {
                 const response = await axios.post('http://localhost:3000/create-user', values);
-                setAlert({ open: true, message: response.data, severity: 'success' });
+                if(!response) throw new Error('Hubo un error al crear el usuario')
+                setAlert({ open: true, message: ' Te informamos que tu usuario ha sido creado con éxito. A tu correo electrónico llegará información sobre el plan que elegiste, así como enlaces para contacto directo.Por favor, revisa también tu bandeja de spam', severity: 'success' });
                 resetForm();
               } catch (error) {
                 console.log(error.response);
@@ -79,6 +80,7 @@ function ContactSection() {
               }
             }}
           >
+           
             {({ errors, touched, setFieldValue }) => (
               <Form className='form' style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <Field

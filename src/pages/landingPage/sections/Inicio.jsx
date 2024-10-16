@@ -25,7 +25,7 @@ function Inicio() {
                     >
                         hogar <br /> esperanza
                     </Typography>
-                    <Typography textAlign="center">
+                    <Typography  textAlign="center">
                         Somos un hogar de vida dedicada a brindar apoyo, cuidado y amor a los adultos mayores,
                         promoviendo su bienestar físico, emocional y social. Nuestro objetivo es crear un entorno
                         acogedor y seguro donde nuestros abuelos puedan vivir con dignidad, recibir atención

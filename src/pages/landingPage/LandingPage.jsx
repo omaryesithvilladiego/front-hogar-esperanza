@@ -12,6 +12,8 @@ import SocialMedia from "./components/social-media/SocialMedia.jsx";
 
 function LandingPage() {
     return ( 
+
+        
     
     <div>
   <SocialMedia />

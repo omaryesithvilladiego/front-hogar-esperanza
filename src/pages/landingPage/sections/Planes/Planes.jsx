@@ -56,7 +56,7 @@ function Planes() {
                     modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay, Manipulation, Zoom]}
                     pagination={{ clickable: true }}
                     scrollbar={{ draggable: true }}
-                    style={{ width:'95vw'}}
+                    style={{ width:'89vw'}}
                     navigation
                     spaceBetween={100}
                     breakpoints={{

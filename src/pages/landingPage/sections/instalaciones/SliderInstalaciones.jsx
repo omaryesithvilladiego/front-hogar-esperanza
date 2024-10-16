@@ -4,7 +4,7 @@ import { Navigation, Pagination, Scrollbar, A11y, Autoplay, Manipulation, Zoom }
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/zoom';
-import { Typography } from '@mui/material';
+import { Typography, useMediaQuery } from '@mui/material';
 import "./instalaciones.css";
 
 const additionalImages = [
@@ -19,6 +19,8 @@ const additionalImages = [
 ];
 
 const Instalaciones = () => {
+
+  const isMobile = useMediaQuery('(min-width:1050px)')
 
   const handleSlideChange = (swiper) => {
     const activeIndex = swiper.activeIndex;
@@ -47,7 +49,7 @@ const Instalaciones = () => {
       <Typography marginTop={'10rem'} component="h2" variant="h2" fontFamily="borel, cursive" textAlign="center" gutterBottom color={'#19a877'} fontSize={{xs:'8vw', md:'4vw'}}>
         instalaciones
       </Typography>
-      <div style={{ height: '100%', width: '95%', margin: '0 auto', display: 'flex', alignItems: 'center'}}>
+      <div style={{ height: '100%', width: !isMobile ? '95%' : '80%', margin: '0 auto', display: 'flex', alignItems: 'center'}}>
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay, Manipulation, Zoom]}
           spaceBetween={100}
