@@ -5,7 +5,7 @@ import { LogoTiktok } from "../../../../../public/logo-tiktok-svgrepo-com";
 const actions = [
     { icon: <Instagram sx={{ color: 'purple' }} />, name: 'Instagram', link:'https://www.instagram.com/hogaresperanza.mtr/profilecard/?igsh=YWw0NTd1NWw2eDJ1' },
     { icon: <Facebook sx={{ color: 'blue' }} />, name: 'Facebook', link:'https://www.facebook.com/share/GQntcxkNkuwqfqFf/?mibextid=LQQJ4d' },
-    { icon: <WhatsApp sx={{ color: 'green' }} />, name: 'WhatsApp' },
+    { icon: <WhatsApp sx={{ color: 'green' }} />, name: 'WhatsApp', link:'https://wa.me/3013743729' },
     {icon: <div style={{color:'white', cursor:'pointer',width: '30px',
     height: '2rem'}}> {<LogoTiktok color={'#000000'} />}</div>, name:'TikTok', link:'https://www.tiktok.com/@hogar.esperanza?_t=8qUdqqrzFME&_r=1'}
 ];
