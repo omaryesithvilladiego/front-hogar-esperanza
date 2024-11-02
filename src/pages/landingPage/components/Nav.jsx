@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AppBar, Toolbar, IconButton, Button, Box, Drawer, List, ListItem, ListItemText, Container, Stack } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import '../../landingPage/components/styles/nav.css';
+import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import { useLocation } from 'react-router-dom/cjs/react-router-dom';
 
 function Nav() {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const location = useLocation()
+  const history = useHistory()
+
+  useEffect(() => {
+    console.log(location);
+  },[])
 
   const handleDrawerOpen = () => {
     setDrawerOpen(true);
@@ -19,11 +27,12 @@ function Nav() {
       <AppBar position="fixed" sx={{ backgroundColor: 'rgba(1, 1, 1, 0.2)', boxShadow: 'none', padding: '1rem' }}>
         <Toolbar>
           <Stack alignItems={'center'} justifyContent={'space-between'} width={'100%'} flexDirection={'row'}>
-            <IconButton sx={{ display: { lg: 'none', md: 'none' } }} edge="start" color="inherit" aria-label="menu" onClick={handleDrawerOpen}>
+           
+           {location.pathname === '/' && <IconButton sx={{ display: { lg: 'none', md: 'none' } }} edge="start" color="inherit" aria-label="menu" onClick={handleDrawerOpen}>
               <MenuIcon />
-            </IconButton>
+            </IconButton> } 
 
-            <a href="#home">
+            <a href={location.pathname === '/' && '#home'} onClick={() => { !(location.pathname === '/') &&  history.goBack()}}>
               <Box
                 className='contanier-palomita'
                 sx={{ margin: 0, width:{xs:'2rem', lg:'5rem'}, cursor: 'pointer' }}
@@ -32,11 +41,13 @@ function Nav() {
               />
             </a>
 
-            <Box width={'100%'} display={{ xs: 'none', md: 'flex', color:'white' }} sx={{ justifyContent: 'flex-end' }}>
+          {location.pathname === '/' &&  <Box width={'100%'} display={{ xs: 'none', md: 'flex', color:'white' }} sx={{ justifyContent: 'flex-end' }}>
               <Button component="a" style={{color:'white'}} href="#mision">SOBRE NOSOTROS</Button>
               <Button component="a" style={{color:'white'}} href="#contacto">CONTÁCTANOS</Button>
               <Button component="a" style={{color:'white'}} href="#gallery">GALERÍA</Button>
-            </Box>
+            </Box>}
+           
+            
           </Stack>
         </Toolbar>
       </AppBar>

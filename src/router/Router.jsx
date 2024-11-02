@@ -24,7 +24,7 @@ import  Users  from "../private-pages/Users";
           </Route>
           <Route exact path='/login'> <LoginPage /> </Route>
           <PrivateRouter exact path='/users' component={Users} /> 
-          <Route exact path='/*' component={<>No existe la pagina</>}> </Route>
+          <Route exact path='/*' component={NotFoundPage}> </Route>
         
         </Switch>
     
@@ -32,3 +32,7 @@ import  Users  from "../private-pages/Users";
   }
 
   export default Router
+
+  function NotFoundPage() {
+    return (<>No existe la pagina</>)
+  }
